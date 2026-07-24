@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ShopEase.API/ShopEase.API.csproj" Id="8a3c3673-db5a-4ae8-b2c8-1706db23e2d7" />
+  <Project Path="ShopEase.Application/ShopEase.Application.csproj" Id="3e361385-8440-420b-b1df-bf57dbc30de6" />
+  <Project Path="ShopEase.Domain/ShopEase.Domain.csproj" />
+  <Project Path="ShopEase.Infrastructure/ShopEase.Infrastructure.csproj" Id="92acbdd2-71d9-4c20-8bba-01b964186cfa" />
+  <Project Path="ShopEase.Tests/ShopEase.Tests.csproj" Id="ba7aee94-0ed1-4871-87e2-16e92feed844" />
+</Solution>
