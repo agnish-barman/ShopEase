@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="ShopEase.API/ShopEase.API.csproj" Id="8a3c3673-db5a-4ae8-b2c8-1706db23e2d7" />
   <Project Path="ShopEase.Application/ShopEase.Application.csproj" Id="3e361385-8440-420b-b1df-bf57dbc30de6" />
   <Project Path="ShopEase.Domain/ShopEase.Domain.csproj" />

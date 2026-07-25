@@ -1,13 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopEase.Domain.Entities;
 
 namespace ShopEase.Infrastructure.Data;
 
-//Inheritance:This tells Entity Framework Core that this class is our database context.
 public class ShopEaseDbContext : DbContext
 {
-    //Constructor: ASP.NET Core will automatically provide the database configuration through Dependency Injection
     public ShopEaseDbContext(DbContextOptions<ShopEaseDbContext> options)
         : base(options)
     {
+    }
+
+    public DbSet<User> Users { get; set; }
+
+    public DbSet<Role> Roles { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Role)
+            .WithMany(r => r.Users)
+            .HasForeignKey(u => u.RoleId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
