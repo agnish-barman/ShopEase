@@ -1,6 +1,6 @@
 ﻿namespace ShopEase.Domain.Entities;
 
-public class Category
+public class Product
 {
     public Guid Id { get; set; }
 
@@ -8,21 +8,17 @@ public class Category
 
     public string Description { get; set; } = string.Empty;
 
+    public decimal Price { get; set; }
+
     public bool IsActive { get; set; } = true;
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime? UpdatedAt { get; set; }
 
-    // Self-referencing Foreign Key
-    public Guid? ParentCategoryId { get; set; }
+    // Foreign Key
+    public Guid CategoryId { get; set; }
 
     // Navigation Property
-    public Category? ParentCategory { get; set; }
-
-    // Navigation Property
-    public ICollection<Category> ChildCategories { get; set; } = new List<Category>();
-
-    // Navigation Property
-    public ICollection<Product> Products { get; set; } = new List<Product>();
+    public Category Category { get; set; } = null!;
 }
