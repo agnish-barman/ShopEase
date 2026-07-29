@@ -18,14 +18,13 @@ public class ShopEaseDbContext : DbContext
 
     public DbSet<Product> Products { get; set; }
 
+    public DbSet<ProductVariant> ProductVariants { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-    modelBuilder.Entity<Product>()
-        .Property(p => p.Price)
-        .HasPrecision(18, 2);
-
+    
         // User -> Role
         modelBuilder.Entity<User>()
             .HasOne(u => u.Role)
@@ -45,6 +44,18 @@ public class ShopEaseDbContext : DbContext
             .HasOne(p => p.Category)
             .WithMany(c => c.Products)
             .HasForeignKey(p => p.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Product Price Precision
+        modelBuilder.Entity<Product>()
+            .Property(p => p.Price)
+            .HasPrecision(18, 2);
+
+        // Product -> ProductVariant
+        modelBuilder.Entity<ProductVariant>()
+            .HasOne(pv => pv.Product)
+            .WithMany(p => p.ProductVariants)
+            .HasForeignKey(pv => pv.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

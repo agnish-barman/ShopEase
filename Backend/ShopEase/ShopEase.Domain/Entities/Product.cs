@@ -21,4 +21,7 @@ public class Product
 
     // Navigation Property
     public Category Category { get; set; } = null!;
+
+    // Navigation Property
+    public ICollection<ProductVariant> ProductVariants { get; set; } = new List<ProductVariant>();
 }
