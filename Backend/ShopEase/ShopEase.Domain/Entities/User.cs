@@ -23,4 +23,7 @@ public class User
 
     // Navigation Property
     public Role Role { get; set; } = null!;
+
+    // Navigation Property
+    public ICollection<Cart> Carts { get; set; } = new List<Cart>();
 }

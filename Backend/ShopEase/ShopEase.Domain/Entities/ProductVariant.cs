@@ -23,4 +23,7 @@ public class ProductVariant
 
     // Navigation Property
     public Product Product { get; set; } = null!;
+
+    // Navigation Property
+    public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 }

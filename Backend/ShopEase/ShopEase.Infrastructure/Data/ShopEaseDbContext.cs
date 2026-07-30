@@ -22,6 +22,10 @@ public class ShopEaseDbContext : DbContext
 
     public DbSet<ProductImage> ProductImages { get; set; }
 
+    public DbSet<Cart> Carts { get; set; }
+
+    public DbSet<CartItem> CartItems { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -65,6 +69,27 @@ public class ShopEaseDbContext : DbContext
             .HasOne(pi => pi.Product)
             .WithMany(p => p.ProductImages)
             .HasForeignKey(pi => pi.ProductId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // User -> Cart
+        modelBuilder.Entity<Cart>()
+            .HasOne(c => c.User)
+            .WithMany(u => u.Carts)
+            .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Cart -> CartItem
+        modelBuilder.Entity<CartItem>()
+            .HasOne(ci => ci.Cart)
+            .WithMany(c => c.CartItems)
+            .HasForeignKey(ci => ci.CartId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // ProductVariant -> CartItem
+        modelBuilder.Entity<CartItem>()
+            .HasOne(ci => ci.ProductVariant)
+            .WithMany(pv => pv.CartItems)
+            .HasForeignKey(ci => ci.ProductVariantId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
