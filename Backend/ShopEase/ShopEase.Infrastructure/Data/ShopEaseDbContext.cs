@@ -20,6 +20,8 @@ public class ShopEaseDbContext : DbContext
 
     public DbSet<ProductVariant> ProductVariants { get; set; }
 
+    public DbSet<ProductImage> ProductImages { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -56,6 +58,13 @@ public class ShopEaseDbContext : DbContext
             .HasOne(pv => pv.Product)
             .WithMany(p => p.ProductVariants)
             .HasForeignKey(pv => pv.ProductId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Product -> ProductImage
+        modelBuilder.Entity<ProductImage>()
+            .HasOne(pi => pi.Product)
+            .WithMany(p => p.ProductImages)
+            .HasForeignKey(pi => pi.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -24,4 +24,7 @@ public class Product
 
     // Navigation Property
     public ICollection<ProductVariant> ProductVariants { get; set; } = new List<ProductVariant>();
+
+    // Navigation Property
+    public ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
 }
