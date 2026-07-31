@@ -18,4 +18,7 @@ public class Cart
 
     // Navigation Property
     public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+
+    // Navigation Property
+    public ICollection<Checkout> Checkouts { get; set; } = new List<Checkout>();
 }

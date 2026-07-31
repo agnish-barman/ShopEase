@@ -26,4 +26,7 @@ public class User
 
     // Navigation Property
     public ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
+    // Navigation Property
+    public ICollection<Checkout> Checkouts { get; set; } = new List<Checkout>();
 }
