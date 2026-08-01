@@ -32,6 +32,8 @@ public class ShopEaseDbContext : DbContext
 
     public DbSet<OrderItem> OrderItems { get; set; }
 
+    public DbSet<Payment> Payments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -150,5 +152,18 @@ public class ShopEaseDbContext : DbContext
         modelBuilder.Entity<OrderItem>()
             .Property(oi => oi.UnitPrice)
             .HasPrecision(18, 2);
+
+        // Order -> Payment
+        modelBuilder.Entity<Payment>()
+            .HasOne(p => p.Order)
+            .WithMany(o => o.Payments)
+            .HasForeignKey(p => p.OrderId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Payment Amount Precision
+        modelBuilder.Entity<Payment>()
+            .Property(p => p.Amount)
+            .HasPrecision(18, 2);
+
     }
 }

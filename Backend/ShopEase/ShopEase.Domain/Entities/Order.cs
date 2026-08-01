@@ -28,4 +28,7 @@ public class Order
 
     // Navigation Property
     public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+    // Navigation Property
+    public ICollection<Payment> Payments { get; set; } = new List<Payment>();
 }
