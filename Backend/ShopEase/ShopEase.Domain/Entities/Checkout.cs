@@ -27,4 +27,7 @@ public class Checkout
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime? UpdatedAt { get; set; }
+
+    // Navigation Property
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }

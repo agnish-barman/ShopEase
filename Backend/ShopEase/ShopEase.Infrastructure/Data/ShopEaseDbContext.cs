@@ -28,6 +28,10 @@ public class ShopEaseDbContext : DbContext
 
     public DbSet<Checkout> Checkouts { get; set; }
 
+    public DbSet<Order> Orders { get; set; }
+
+    public DbSet<OrderItem> OrderItems { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -108,5 +112,43 @@ public class ShopEaseDbContext : DbContext
             .WithMany(c => c.Checkouts)
             .HasForeignKey(ch => ch.CartId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        // User -> Order
+        modelBuilder.Entity<Order>()
+            .HasOne(o => o.User)
+            .WithMany(u => u.Orders)
+            .HasForeignKey(o => o.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Checkout -> Order
+        modelBuilder.Entity<Order>()
+            .HasOne(o => o.Checkout)
+            .WithMany(c => c.Orders)
+            .HasForeignKey(o => o.CheckoutId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Order -> OrderItem
+        modelBuilder.Entity<OrderItem>()
+            .HasOne(oi => oi.Order)
+            .WithMany(o => o.OrderItems)
+            .HasForeignKey(oi => oi.OrderId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // ProductVariant -> OrderItem
+        modelBuilder.Entity<OrderItem>()
+            .HasOne(oi => oi.ProductVariant)
+            .WithMany(pv => pv.OrderItems)
+            .HasForeignKey(oi => oi.ProductVariantId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Order Total Amount Precision
+        modelBuilder.Entity<Order>()
+            .Property(o => o.TotalAmount)
+            .HasPrecision(18, 2);
+
+        // OrderItem Unit Price Precision
+        modelBuilder.Entity<OrderItem>()
+            .Property(oi => oi.UnitPrice)
+            .HasPrecision(18, 2);
     }
 }

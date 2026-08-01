@@ -29,4 +29,7 @@ public class User
 
     // Navigation Property
     public ICollection<Checkout> Checkouts { get; set; } = new List<Checkout>();
+
+    // Navigation Property
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }

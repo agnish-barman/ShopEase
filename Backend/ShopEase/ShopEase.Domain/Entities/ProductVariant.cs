@@ -26,4 +26,7 @@ public class ProductVariant
 
     // Navigation Property
     public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+
+    // Navigation Property
+    public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }
