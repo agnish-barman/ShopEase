@@ -31,4 +31,7 @@ public class Order
 
     // Navigation Property
     public ICollection<Payment> Payments { get; set; } = new List<Payment>();
+
+    // Navigation Property
+    public ICollection<Shipping> Shippings { get; set; } = new List<Shipping>();
 }
