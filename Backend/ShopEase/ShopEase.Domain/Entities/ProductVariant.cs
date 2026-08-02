@@ -29,4 +29,7 @@ public class ProductVariant
 
     // Navigation Property
     public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+    // Navigation Property
+    public Inventory? Inventory { get; set; }
 }

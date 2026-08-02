@@ -36,6 +36,8 @@ public class ShopEaseDbContext : DbContext
 
     public DbSet<Shipping> Shippings { get; set; }
 
+    public DbSet<Inventory> Inventories { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -172,6 +174,13 @@ public class ShopEaseDbContext : DbContext
             .HasOne(s => s.Order)
             .WithMany(o => o.Shippings)
             .HasForeignKey(s => s.OrderId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // ProductVariant -> Inventory
+        modelBuilder.Entity<Inventory>()
+            .HasOne(i => i.ProductVariant)
+            .WithOne(pv => pv.Inventory)
+            .HasForeignKey<Inventory>(i => i.ProductVariantId)
             .OnDelete(DeleteBehavior.Restrict);
 
     }
