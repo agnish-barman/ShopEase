@@ -1,0 +1,82 @@
+main {
+  min-height: 100vh;
+  background-color: var(--color-ivory);
+}
+
+.section {
+  min-height: 100vh;
+}
+
+.design-test {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-xl);
+  text-align: center;
+
+  background-color: var(--color-ivory);
+}
+
+.design-test__eyebrow {
+  margin: 0 0 var(--space-sm);
+
+  color: var(--color-gold);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/*.design-test__title {
+  margin: 0;
+
+  color: var(--color-soft-black);
+
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1;
+}*/
+
+/*.design-test__description {
+  max-width: 600px;
+  margin: var(--space-lg) 0 var(--space-xl);
+
+  color: var(--color-warm-grey);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-md);
+  font-weight: 400;
+}*/
+
+.design-test__button {
+  padding: 0.9rem 1.8rem;
+
+  border: var(--border-gold);
+  border-radius: var(--radius-sm);
+
+  background-color: var(--color-gold);
+  color: var(--color-white);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.design-test__button:hover {
+  background-color: var(--color-charcoal);
+  color: var(--color-gold);
+}

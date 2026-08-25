@@ -1,0 +1,104 @@
+/* =========================================
+   ShopEase Responsive Foundation
+   ========================================= */
+
+/* -----------------------------------------
+   Global Page Container
+   ----------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+}
+
+/* -----------------------------------------
+   Full-width Section
+   ----------------------------------------- */
+
+.section {
+  width: 100%;
+}
+
+/* -----------------------------------------
+   Section Spacing
+   ----------------------------------------- */
+
+.section-padding {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+}
+
+/* -----------------------------------------
+   Mobile
+   Base styles are mobile-first
+   ----------------------------------------- */
+
+@media (max-width: 575px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-padding {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+}
+
+/* -----------------------------------------
+   Tablet
+   ----------------------------------------- */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-padding {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+}
+
+/* -----------------------------------------
+   Desktop
+   ----------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 1439px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* -----------------------------------------
+   Large Desktop
+   ----------------------------------------- */
+
+@media (min-width: 1440px) {
+  .container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* =========================================
+   Responsive Typography
+   ========================================= */
+
+.responsive-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 6vw, 5rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.responsive-subheading {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+}
