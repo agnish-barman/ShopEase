@@ -1,14 +1,18 @@
-import type { ReactNode } from 'react';
-import './MainLayout.css';
+import AnnouncementBar from "../components/AnnouncementBar/AnnouncementBar";
+import "./MainLayout.css";
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="main-layout">
-      {children}
+      <AnnouncementBar />
+
+      <main className="main-layout__content">
+        {children}
+      </main>
     </div>
   );
 }
