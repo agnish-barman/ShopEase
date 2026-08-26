@@ -1,4 +1,5 @@
 import AnnouncementBar from "../components/AnnouncementBar/AnnouncementBar";
+import Header from "../components/Header/Header";
 import "./MainLayout.css";
 
 interface MainLayoutProps {
@@ -7,13 +8,14 @@ interface MainLayoutProps {
 
 function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="main-layout">
+    <main className="main-layout">
       <AnnouncementBar />
+      <Header />
 
-      <main className="main-layout__content">
+      <div className="main-layout__content">
         {children}
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 
