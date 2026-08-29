@@ -1,29 +1,15 @@
 import './App.css';
 import MainLayout from './layouts/MainLayout';
+import Hero from './components/Hero/Hero';
+import CategoryEditorial from './components/CategoryEditorial/CategoryEditorial';
+import FeaturedCollections from './components/FeaturedCollections/FeaturedCollections';
 
 function App() {
   return (
     <MainLayout>
-      <section className="section section-padding">
-        <div className="container">
-          <p className="design-test__eyebrow">
-            SHOPEASE
-          </p>
-
-          <h1 className="responsive-heading">
-            The Royal Tapestry
-          </h1>
-
-          <p className="responsive-subheading">
-            A luxury e-commerce experience inspired by India's timeless
-            craftsmanship and heritage.
-          </p>
-
-          <button className="design-test__button">
-            Explore the Collection
-          </button>
-        </div>
-      </section>
+      <Hero />
+      <CategoryEditorial />
+      <FeaturedCollections />
     </MainLayout>
   );
 }

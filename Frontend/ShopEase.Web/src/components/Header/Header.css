@@ -1,7 +1,7 @@
 .site-header {
   width: 100%;
   background-color: var(--color-ivory);
-  border-bottom: var(--border-light);
+  border-bottom: var(--border-width-thin) var(--border-style-default) var(--border-color-light);
 }
 
 .header-container {
