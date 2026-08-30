@@ -6,6 +6,7 @@ import CategoryEditorial from './components/CategoryEditorial/CategoryEditorial'
 import FeaturedMasterpieces from './components/FeaturedMasterpieces/FeaturedMasterpieces';
 import Heritage from './components/Heritage/Heritage';
 import VirtualConcierge from './components/VirtualConcierge/VirtualConcierge';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <FeaturedMasterpieces />
       <Heritage />
       <VirtualConcierge />
+      <Footer />
     </MainLayout>
   );
 }
