@@ -5,6 +5,7 @@ import CategoryEditorial from './components/CategoryEditorial/CategoryEditorial'
 //import FeaturedCollections from './components/FeaturedCollections/FeaturedCollections';
 import FeaturedMasterpieces from './components/FeaturedMasterpieces/FeaturedMasterpieces';
 import Heritage from './components/Heritage/Heritage';
+import VirtualConcierge from './components/VirtualConcierge/VirtualConcierge';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <CategoryEditorial />
       <FeaturedMasterpieces />
       <Heritage />
+      <VirtualConcierge />
     </MainLayout>
   );
 }
