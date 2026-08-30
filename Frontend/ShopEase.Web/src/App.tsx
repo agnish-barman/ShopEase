@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero';
 import CategoryEditorial from './components/CategoryEditorial/CategoryEditorial';
 //import FeaturedCollections from './components/FeaturedCollections/FeaturedCollections';
 import FeaturedMasterpieces from './components/FeaturedMasterpieces/FeaturedMasterpieces';
+import Heritage from './components/Heritage/Heritage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <CategoryEditorial />
       <FeaturedMasterpieces />
+      <Heritage />
     </MainLayout>
   );
 }
