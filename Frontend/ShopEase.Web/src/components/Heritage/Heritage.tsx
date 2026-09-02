@@ -1,5 +1,6 @@
 import heritageArtisan from '../../assets/heritage-artisan.jpg';
 import './Heritage.css';
+import { heritageData } from './heritageData';
 
 function Heritage() {
   return (
@@ -8,35 +9,32 @@ function Heritage() {
 
         {/* Documentary Image */}
         <div className="heritage__image">
-            <img
-                src={heritageArtisan}
-                alt="Artisan working on a traditional textile loom"
-            />
+          <img
+            src={heritageArtisan}
+            alt="Artisan working on a traditional textile loom"
+          />
         </div>
 
         {/* Story Content */}
         <div className="heritage__content">
 
           <p className="heritage__eyebrow">
-            The Heritage
+            {heritageData.eyebrow}
           </p>
 
           <h2 className="heritage__title">
-            Preserving Centuries of Craft
+            {heritageData.title}
           </h2>
 
           <p className="heritage__description">
-            Every thread tells a story of heritage. Our sarees and lehengas
-            are not merely garments, but heirloom pieces crafted by
-            generational artisans keeping ancient Indian textile traditions
-            alive.
+            {heritageData.description}
           </p>
 
           <a
-            href="/heritage"
+            href={heritageData.ctaLink}
             className="heritage__link"
           >
-            Read Our Story
+            {heritageData.ctaLabel}
           </a>
 
         </div>

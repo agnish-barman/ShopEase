@@ -1,31 +1,35 @@
 import './Footer.css';
+import { footerData } from './footerData';
 
 function Footer() {
   return (
     <footer className="footer">
-
       <div className="footer__container">
 
         {/* Brand & Socials */}
         <div className="footer__column footer__brand">
           <div className="footer__logo">
-            ShopEase
+            {footerData.brand.name}
           </div>
 
           <p className="footer__copyright">
-            © 2026 ShopEase. All rights reserved.
+            {footerData.brand.copyright}
           </p>
 
           <div className="footer__social">
             <h3 className="footer__heading">
-              Follow Us
+              {footerData.brand.socialHeading}
             </h3>
 
             <div className="footer__social-links">
-              <a href="#">Instagram</a>
-              <a href="#">Facebook</a>
-              <a href="#">TikTok</a>
-              <a href="#">YouTube</a>
+              {footerData.brand.socialLinks.map((link) => (
+                <a
+                  href={link.href}
+                  key={link.label}
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -33,38 +37,47 @@ function Footer() {
         {/* Client Care */}
         <div className="footer__column">
           <h3 className="footer__heading">
-            Client Care
+            {footerData.clientCare.heading}
           </h3>
 
           <nav className="footer__links">
-            <a href="#">FAQ</a>
-            <a href="#">Shipping & Returns</a>
-            <a href="#">Track Order</a>
-            <a href="#">Private Appointments</a>
+            {footerData.clientCare.links.map((link) => (
+              <a
+                href={link.href}
+                key={link.label}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
         </div>
 
         {/* The House */}
         <div className="footer__column">
           <h3 className="footer__heading">
-            The House
+            {footerData.theHouse.heading}
           </h3>
 
           <nav className="footer__links">
-            <a href="#">Sustainability</a>
-            <a href="#">Careers</a>
-            <a href="#">Customer Reviews</a>
+            {footerData.theHouse.links.map((link) => (
+              <a
+                href={link.href}
+                key={link.label}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
         </div>
 
         {/* Newsletter */}
         <div className="footer__column footer__newsletter">
           <h3 className="footer__heading">
-            Join the Inner Circle
+            {footerData.newsletter.heading}
           </h3>
 
           <p className="footer__newsletter-text">
-            Receive private collection drops and updates from ShopEase.
+            {footerData.newsletter.description}
           </p>
 
           <form className="footer__newsletter-form">
@@ -72,18 +85,18 @@ function Footer() {
               htmlFor="footer-email"
               className="footer__newsletter-label"
             >
-              Email Address
+              {footerData.newsletter.label}
             </label>
 
             <div className="footer__newsletter-input-group">
               <input
                 id="footer-email"
                 type="email"
-                placeholder="Enter your email"
+                placeholder={footerData.newsletter.placeholder}
               />
 
               <button type="submit">
-                Subscribe
+                {footerData.newsletter.buttonLabel}
               </button>
             </div>
           </form>
@@ -96,17 +109,22 @@ function Footer() {
         <div className="footer__bottom-container">
 
           <p>
-            © 2026 ShopEase
+            {footerData.legal.copyright}
           </p>
 
           <div className="footer__legal-links">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
+            {footerData.legal.links.map((link) => (
+              <a
+                href={link.href}
+                key={link.label}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
         </div>
       </div>
-
     </footer>
   );
 }

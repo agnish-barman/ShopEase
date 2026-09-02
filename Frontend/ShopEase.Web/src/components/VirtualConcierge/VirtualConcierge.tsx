@@ -1,34 +1,36 @@
 import './VirtualConcierge.css';
+import { virtualConciergeData } from './virtualConciergeData';
 
 function VirtualConcierge() {
   return (
     <section className="virtual-concierge">
       <div className="virtual-concierge__container">
 
-        <div className="virtual-concierge__icon" aria-hidden="true">
+        <div
+          className="virtual-concierge__icon"
+          aria-hidden="true"
+        >
           ◆
         </div>
 
         <div className="virtual-concierge__content">
           <p className="virtual-concierge__eyebrow">
-            Private Service
+            {virtualConciergeData.eyebrow}
           </p>
 
           <h2 className="virtual-concierge__title">
-            Personalized Styling & Private Appointments
+            {virtualConciergeData.title}
           </h2>
 
           <p className="virtual-concierge__description">
-            Connect with our expert stylists from the comfort of your home
-            for custom blouse fittings, color matching, and bespoke bridal
-            consultations.
+            {virtualConciergeData.description}
           </p>
 
           <a
-            href="#"
+            href={virtualConciergeData.ctaLink}
             className="virtual-concierge__cta"
           >
-            Book a Consultation
+            {virtualConciergeData.ctaLabel}
           </a>
         </div>
 

@@ -1,74 +1,68 @@
 import './CategoryEditorial.css';
+import { categoryEditorialData } from './categoryEditorialData';
 
 function CategoryEditorial() {
+  const feature = categoryEditorialData.find(
+    (item) => item.variant === 'feature'
+  );
+
+  const categories = categoryEditorialData.filter(
+    (item) => item.variant === 'category'
+  );
+
   return (
     <section className="category-editorial">
       <div className="category-editorial__container">
 
-        {/* Large Feature — Bridal Lehengas */}
-        <article className="category-editorial__feature">
-          <div className="category-editorial__image">
-            {/* Editorial image will be added during styling */}
-          </div>
+        {/* Large Feature */}
+        {feature && (
+          <article className="category-editorial__feature">
+            <div className="category-editorial__image">
+              {/* Editorial image will be connected later */}
+            </div>
 
-          <div className="category-editorial__content">
-            <h2 className="category-editorial__title">
-              Bridal Lehengas
-            </h2>
+            <div className="category-editorial__content">
+              <h2 className="category-editorial__title">
+                {feature.title}
+              </h2>
 
-            <a
-              href="/shop"
-              className="category-editorial__link"
-            >
-              Discover
-            </a>
-          </div>
-        </article>
+              <a
+                href={feature.ctaLink}
+                className="category-editorial__link"
+              >
+                {feature.ctaLabel}
+              </a>
+            </div>
+          </article>
+        )}
 
         {/* Stacked Categories */}
         <div className="category-editorial__stack">
+          {categories.map((category) => (
+            <article
+              className="category-editorial__category"
+              key={category.id}
+            >
+              <div className="category-editorial__image">
+                {/* Editorial image will be connected later */}
+              </div>
 
-          {/* Sarees */}
-          <article className="category-editorial__category">
-            <div className="category-editorial__image">
-              {/* Saree image will be added during styling */}
-            </div>
+              <div className="category-editorial__content">
+                <h2 className="category-editorial__title">
+                  {category.title}
+                </h2>
 
-            <div className="category-editorial__content">
-              <h2 className="category-editorial__title">
-                Handcrafted Banarasi & Kanjeevaram Sarees
-              </h2>
-
-              <a
-                href="/shop"
-                className="category-editorial__link"
-              >
-                Explore Sarees
-              </a>
-            </div>
-          </article>
-
-          {/* Drape */}
-          <article className="category-editorial__category">
-            <div className="category-editorial__image">
-              {/* Drape image will be added during styling */}
-            </div>
-
-            <div className="category-editorial__content">
-              <h2 className="category-editorial__title">
-                Lightweight Organza & Organza Drape
-              </h2>
-
-              <a
-                href="/shop"
-                className="category-editorial__link"
-              >
-                Explore Drape
-              </a>
-            </div>
-          </article>
-
+                <a
+                  href={category.ctaLink}
+                  className="category-editorial__link"
+                >
+                  {category.ctaLabel}
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
+
       </div>
     </section>
   );

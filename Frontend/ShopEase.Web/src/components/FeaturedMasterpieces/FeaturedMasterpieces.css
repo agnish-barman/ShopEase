@@ -13,7 +13,9 @@
   padding: var(--space-4xl) 0;
 }
 
-/* Section Header */
+/* ========================================
+   Section Header
+   ======================================== */
 
 .featured-masterpieces__header {
   max-width: 700px;
@@ -51,56 +53,135 @@
   line-height: var(--line-height-relaxed);
 }
 
-/* Product Grid */
+/* ========================================
+   Featured Grid
+   ======================================== */
 
 .featured-masterpieces__grid {
+  --masterpiece-media-height: clamp(280px, 32vw, 420px);
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  /*
+    Reference layout:
+
+    Product 1 : Heritage : Product 2
+        1     :    2     :     1
+
+    All three blocks have exactly
+    the same height.
+  */
+
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: var(--masterpiece-media-height);
+
   gap: var(--space-xl);
+
+  align-items: stretch;
 }
 
-/* Product Card */
+/* ========================================
+   Masterpiece Card
+   ======================================== */
 
 .masterpiece-card {
+  position: relative;
+
+  width: 100%;
   min-width: 0;
+  height: var(--masterpiece-media-height);
 }
 
+/* ========================================
+   Product Image
+   ======================================== */
+
 .masterpiece-card__image {
+  position: relative;
+
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
+
   background-color: var(--color-soft-black);
+
   overflow: hidden;
 }
 
-.masterpiece-card__details {
-  padding-top: var(--space-md);
+/* ========================================
+   Product Placeholder
+   ======================================== */
+
+.masterpiece-card__placeholder {
+  position: absolute;
+
+  inset: 0;
+
+  background-color: var(--color-soft-black);
 }
+
+/* ========================================
+   Product Information Overlay
+   ======================================== */
+
+.masterpiece-card__details {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 2;
+
+  padding: 5rem 1.25rem 1.25rem;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.05) 20%,
+    rgba(0, 0, 0, 0.55) 58%,
+    rgba(0, 0, 0, 0.94) 100%
+  );
+}
+
+/* ========================================
+   Product Name
+   ======================================== */
 
 .masterpiece-card__name {
   margin: 0;
 
-  color: var(--color-charcoal);
+  color: #ffffff;
+
   font-family: var(--font-serif);
   font-size: var(--font-lg);
   font-weight: var(--weight-regular);
   line-height: var(--line-height-heading);
 }
 
+/* ========================================
+   Product Price
+   ======================================== */
+
 .masterpiece-card__price {
   margin: var(--space-sm) 0 0;
 
-  color: var(--color-charcoal);
+  color: #ffffff;
+
   font-family: var(--font-sans);
   font-size: var(--font-sm);
   font-weight: var(--weight-semibold);
 }
 
-/* Color Swatches */
+/* ========================================
+   Color Swatches
+   ======================================== */
 
 .masterpiece-card__swatches {
   display: flex;
   align-items: center;
+
   gap: var(--space-sm);
+
   margin-top: var(--space-md);
 }
 
@@ -110,13 +191,18 @@
   width: 14px;
   height: 14px;
 
-  border: var(--border-width-thin) var(--border-style-default)
-    var(--border-color-light);
+  flex: 0 0 14px;
+
+  border: var(--border-width-thin)
+    var(--border-style-default)
+    rgba(255, 255, 255, 0.9);
 
   border-radius: 50%;
 }
 
-/* Swatch tones */
+/* ========================================
+   Swatch Tones
+   ======================================== */
 
 .masterpiece-card__swatches span:nth-child(1) {
   background-color: #5a1f28;
@@ -130,7 +216,108 @@
   background-color: #31543d;
 }
 
-/* Tablet */
+/* ========================================
+   Heritage Visual
+   ======================================== */
+
+.masterpiece-card--heritage {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  height: var(--masterpiece-media-height);
+}
+
+.masterpiece-card--heritage
+  .masterpiece-card__image--heritage {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-soft-black);
+
+  overflow: hidden;
+}
+
+.masterpiece-card__image--heritage img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ========================================
+   Heritage Story
+   ======================================== */
+
+.featured-masterpieces__heritage {
+  max-width: 760px;
+
+  margin: var(--space-2xl) auto 0;
+
+  text-align: center;
+}
+
+.featured-masterpieces__heritage-eyebrow {
+  margin: 0 0 var(--space-sm);
+
+  color: var(--color-gold);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-xs);
+
+  letter-spacing: var(--tracking-wide);
+
+  text-transform: uppercase;
+}
+
+.featured-masterpieces__heritage-title {
+  margin: 0 0 var(--space-md);
+
+  color: var(--color-charcoal);
+
+  font-family: var(--font-serif);
+  font-size: var(--font-2xl);
+  font-weight: var(--weight-regular);
+}
+
+.featured-masterpieces__heritage-description {
+  max-width: 680px;
+
+  margin: 0 auto var(--space-lg);
+
+  color: var(--color-warm-grey);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+
+  line-height: var(--line-height-relaxed);
+}
+
+.featured-masterpieces__heritage-link {
+  display: inline-block;
+
+  color: var(--color-charcoal);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  letter-spacing: var(--tracking-wide);
+
+  border-bottom: 1px solid var(--color-gold);
+
+  padding-bottom: var(--space-xs);
+}
+
+/* ========================================
+   Tablet
+   ======================================== */
 
 @media (max-width: 767px) {
   .featured-masterpieces__container {
@@ -146,19 +333,115 @@
   }
 
   .featured-masterpieces__grid {
-    grid-template-columns: repeat(2, 1fr);
+    /*
+      Keep the reference composition:
+
+      Product 1 : Heritage : Product 2
+          1     :    2     :     1
+
+      Same height for all three.
+    */
+
+    --masterpiece-media-height: 300px;
+
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: var(--masterpiece-media-height);
+
     gap: var(--space-lg);
+
+    align-items: stretch;
   }
-}
 
-/* Mobile */
+  .masterpiece-card {
+    height: var(--masterpiece-media-height);
+  }
 
-@media (max-width: 575px) {
-  .featured-masterpieces__grid {
-    grid-template-columns: 1fr;
+  .masterpiece-card__image {
+    height: 100%;
+  }
+
+  .masterpiece-card--heritage {
+    height: var(--masterpiece-media-height);
+  }
+
+  .masterpiece-card--heritage
+    .masterpiece-card__image--heritage {
+    height: 100%;
+  }
+
+  .masterpiece-card__details {
+    padding: 4rem 1rem 1rem;
   }
 
   .masterpiece-card__name {
     font-size: var(--font-md);
+  }
+
+  .masterpiece-card__price {
+    font-size: var(--font-sm);
+  }
+
+  .masterpiece-card__swatches {
+    margin-top: var(--space-sm);
+  }
+}
+
+/* ========================================
+   Mobile
+   ======================================== */
+
+@media (max-width: 575px) {
+  .featured-masterpieces__grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    gap: var(--space-xl);
+  }
+
+  .masterpiece-card {
+    height: auto;
+  }
+
+  .masterpiece-card__image {
+    height: auto;
+
+    aspect-ratio: 3 / 4;
+  }
+
+  .masterpiece-card--heritage {
+    height: auto;
+  }
+
+  .masterpiece-card--heritage
+    .masterpiece-card__image--heritage {
+    height: auto;
+
+    aspect-ratio: 3 / 4;
+  }
+
+  .masterpiece-card__details {
+    padding: 5rem 1rem 1rem;
+  }
+
+  .masterpiece-card__name {
+    font-size: var(--font-md);
+  }
+
+  .masterpiece-card__price {
+    font-size: var(--font-sm);
+  }
+
+  .masterpiece-card__swatches {
+    margin-top: var(--space-sm);
+  }
+
+  .featured-masterpieces__heritage {
+    margin-top: var(--space-xl);
+  }
+
+  .featured-masterpieces__heritage-title {
+    font-size: var(--font-xl);
   }
 }
