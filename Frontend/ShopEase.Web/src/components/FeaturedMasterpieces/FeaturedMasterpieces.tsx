@@ -8,10 +8,7 @@ function FeaturedMasterpieces() {
 
         {/* Section Header */}
         <header className="featured-masterpieces__header">
-          <p className="featured-masterpieces__eyebrow">
-            Curated Showcase
-          </p>
-
+          
           <h2 className="featured-masterpieces__title">
             Featured Masterpieces
           </h2>

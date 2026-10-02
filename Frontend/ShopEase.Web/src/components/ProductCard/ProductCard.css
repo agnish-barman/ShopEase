@@ -1,0 +1,120 @@
+.product-card {
+  min-width: 0;
+}
+
+/* PRODUCT IMAGE */
+
+.product-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-warm-grey);
+}
+
+.product-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card__image img {
+  transform: scale(1.02);
+}
+
+/* PRODUCT INFORMATION */
+
+.product-card__info {
+  padding-top: var(--space-md);
+}
+
+.product-card__name {
+  margin: 0;
+  color: var(--color-charcoal);
+  font-family: var(--font-serif);
+  font-size: var(--font-md);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-heading);
+}
+
+/* PRICING */
+
+.product-card__pricing {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.product-card__price {
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.product-card__original-price {
+  color: var(--color-warm-grey);
+  font-family: var(--font-sans);
+  font-size: var(--font-xs);
+  text-decoration: line-through;
+}
+
+/* RATING */
+
+.product-card__rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: var(--space-sm);
+}
+
+.product-card__stars {
+  color: var(--color-gold);
+  font-size: var(--font-xs);
+  letter-spacing: 1px;
+}
+
+.product-card__rating-value,
+.product-card__review-count {
+  color: var(--color-warm-grey);
+  font-family: var(--font-sans);
+  font-size: var(--font-xs);
+}
+
+/* COLOR SWATCHES */
+
+.product-card__swatches {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.product-card__swatch {
+  width: 14px;
+  height: 14px;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid var(--border-color-light);
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+  .product-card__info {
+    padding-top: var(--space-sm);
+  }
+
+  .product-card__name {
+    font-size: var(--font-sm);
+  }
+
+  .product-card__pricing {
+    gap: 4px;
+  }
+}
