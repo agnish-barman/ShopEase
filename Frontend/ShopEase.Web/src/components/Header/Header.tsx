@@ -1,4 +1,9 @@
+import { useSyncExternalStore } from 'react';
 import './Header.css';
+import {
+  getWishlistSnapshot,
+  subscribeToWishlist,
+} from '../../services/wishlist/wishlist.store';
 
 /* =========================================================
    HEADER DATA CONTRACT
@@ -26,14 +31,103 @@ interface HeaderProps {
 function Header({ data }: HeaderProps) {
 
   /*
-   * Temporary fallback values.
+   * Subscribe to the live Wishlist store.
    *
-   * These are only used until the real API/state is connected.
-   * The Header itself is already prepared to receive dynamic
-   * wishlist and cart values.
+   * The Header will automatically re-render whenever
+   * a product is added to or removed from Wishlist.
    */
-  const wishlistCount = data?.wishlistCount ?? 0;
+  const wishlistIds = useSyncExternalStore(
+    subscribeToWishlist,
+    getWishlistSnapshot
+  );
+
+  /*
+   * Temporary API-ready fallback.
+   *
+   * If HeaderData is provided later by the real API/state,
+   * that value takes priority.
+   *
+   * Until then, the live Wishlist store supplies the count.
+   */
+  const wishlistCount =
+    data?.wishlistCount ?? wishlistIds.length;
+
+  /*
+   * Cart remains API/state-ready for now.
+   */
   const cartCount = data?.cartCount ?? 0;
+
+
+  /* =======================================================
+     ACTIVE CATEGORY
+     ======================================================= */
+
+  const currentPath = window.location.pathname;
+
+  const currentSearch = new URLSearchParams(
+    window.location.search
+  );
+
+  const currentCategory = currentSearch.get('category');
+
+
+  /*
+   * On Shop pages, the category comes directly from
+   * the current URL.
+   *
+   * Example:
+   * /shop?category=lehengas
+   */
+  const isActiveCategory = (category: string) => {
+    return (
+      currentPath === '/shop' &&
+      currentCategory === category
+    );
+  };
+
+
+  /*
+   * On Product Details pages, the originating category
+   * is preserved in the product URL.
+   *
+   * Example:
+   * /product/product-003?category=lehengas
+   */
+  const isProductDetailsPage =
+    currentPath.startsWith('/product/');
+
+
+  const isProductCategoryActive = (
+    category: string
+  ) => {
+    return (
+      isProductDetailsPage &&
+      currentCategory === category
+    );
+  };
+
+
+  /*
+   * Heritage active state.
+   */
+  const isHeritageActive =
+    currentPath === '/heritage' ||
+    currentPath.startsWith('/heritage/');
+
+
+  /*
+   * A category is active either because we are on its
+   * Shop page or because we are viewing a Product Details
+   * page that was opened from that category.
+   */
+  const isCategoryActive = (
+    category: string
+  ) => {
+    return (
+      isActiveCategory(category) ||
+      isProductCategoryActive(category)
+    );
+  };
 
 
   return (
@@ -148,7 +242,6 @@ function Header({ data }: HeaderProps) {
 
               <span className="site-header__wishlist-content">
 
-                {/* Complete Heart */}
                 <svg
                   className="site-header__wishlist-icon"
                   viewBox="0 0 24 24"
@@ -168,8 +261,6 @@ function Header({ data }: HeaderProps) {
                   />
                 </svg>
 
-
-                {/* Dynamic Wishlist Count */}
                 <span className="site-header__wishlist-count">
                   {wishlistCount}
                 </span>
@@ -189,7 +280,6 @@ function Header({ data }: HeaderProps) {
               aria-label={`Shopping bag (${cartCount} items)`}
             >
 
-              {/* Bag Icon */}
               <svg
                 className="site-header__icon site-header__bag-icon"
                 viewBox="0 0 24 24"
@@ -199,14 +289,10 @@ function Header({ data }: HeaderProps) {
                 <path d="M9 8V6a3 3 0 0 1 6 0v2" />
               </svg>
 
-
-              {/* Bag Label */}
               <span className="site-header__action-label">
                 Bag
               </span>
 
-
-              {/* Dynamic Cart Count */}
               <span className="site-header__count">
                 {cartCount}
               </span>
@@ -229,23 +315,87 @@ function Header({ data }: HeaderProps) {
         aria-label="Shop categories"
       >
 
-        <a href="/shop?category=lehengas">
+        <a
+          href="/shop?category=lehengas"
+          className={
+            isCategoryActive('lehengas')
+              ? 'site-header__category-link site-header__category-link--active'
+              : 'site-header__category-link'
+          }
+          aria-current={
+            isCategoryActive('lehengas')
+              ? 'page'
+              : undefined
+          }
+        >
           LEHENGAS
         </a>
 
-        <a href="/shop?category=sarees">
+
+        <a
+          href="/shop?category=sarees"
+          className={
+            isCategoryActive('sarees')
+              ? 'site-header__category-link site-header__category-link--active'
+              : 'site-header__category-link'
+          }
+          aria-current={
+            isCategoryActive('sarees')
+              ? 'page'
+              : undefined
+          }
+        >
           SAREES
         </a>
 
-        <a href="/shop?category=bridal">
+
+        <a
+          href="/shop?category=bridal"
+          className={
+            isCategoryActive('bridal')
+              ? 'site-header__category-link site-header__category-link--active'
+              : 'site-header__category-link'
+          }
+          aria-current={
+            isCategoryActive('bridal')
+              ? 'page'
+              : undefined
+          }
+        >
           BRIDAL
         </a>
 
-        <a href="/heritage">
+
+        <a
+          href="/heritage"
+          className={
+            isHeritageActive
+              ? 'site-header__category-link site-header__category-link--active'
+              : 'site-header__category-link'
+          }
+          aria-current={
+            isHeritageActive
+              ? 'page'
+              : undefined
+          }
+        >
           THE HERITAGE
         </a>
 
-        <a href="/shop?category=jewellery">
+
+        <a
+          href="/shop?category=jewellery"
+          className={
+            isCategoryActive('jewellery')
+              ? 'site-header__category-link site-header__category-link--active'
+              : 'site-header__category-link'
+          }
+          aria-current={
+            isCategoryActive('jewellery')
+              ? 'page'
+              : undefined
+          }
+        >
           JEWELLERY
         </a>
 

@@ -1,6 +1,11 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { shopPageData } from '../../services/shop/shop.data';
 import type { ShopProduct } from '../../services/shop/shop.types';
+import {
+  addToWishlist,
+  isInWishlist,
+  removeFromWishlist,
+} from '../../services/wishlist/wishlist.store';
 import './ProductDetails.css';
 
 function ProductDetails() {
@@ -12,8 +17,34 @@ function ProductDetails() {
     );
   }, [productId]);
 
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  useEffect(() => {
+    if (!productId) {
+      setIsWishlisted(false);
+      return;
+    }
+
+    setIsWishlisted(isInWishlist(productId));
+  }, [productId]);
+
   const handleBack = () => {
     window.history.back();
+  };
+
+  const handleWishlistToggle = () => {
+    if (!productId) {
+      return;
+    }
+
+    if (isWishlisted) {
+      removeFromWishlist(productId);
+      setIsWishlisted(false);
+      return;
+    }
+
+    addToWishlist(productId);
+    setIsWishlisted(true);
   };
 
   if (!product) {
@@ -51,8 +82,6 @@ function ProductDetails() {
   return (
     <main className="product-details">
       <section className="product-details__container">
-
-        {/* Back Navigation */}
         <button
           type="button"
           className="product-details__back-button"
@@ -61,7 +90,6 @@ function ProductDetails() {
           ← Back
         </button>
 
-        {/* Product Image */}
         <div className="product-details__image-wrapper">
           <img
             className="product-details__image"
@@ -70,9 +98,7 @@ function ProductDetails() {
           />
         </div>
 
-        {/* Product Information */}
         <div className="product-details__content">
-
           <p className="product-details__eyebrow">
             ShopEase Collection
           </p>
@@ -81,7 +107,6 @@ function ProductDetails() {
             {product.name}
           </h1>
 
-          {/* Rating */}
           {product.rating !== undefined && (
             <div className="product-details__rating">
               <span
@@ -103,7 +128,6 @@ function ProductDetails() {
             </div>
           )}
 
-          {/* Pricing */}
           <div className="product-details__pricing">
             <span className="product-details__price">
               ₹ {product.price.toLocaleString('en-IN')}
@@ -116,31 +140,26 @@ function ProductDetails() {
             )}
           </div>
 
-          {/* Colors */}
-          {product.colors &&
-            product.colors.length > 0 && (
-              <div className="product-details__colors">
-                <h2 className="product-details__section-title">
-                  Available Colors
-                </h2>
+          {product.colors && product.colors.length > 0 && (
+            <div className="product-details__colors">
+              <h2 className="product-details__section-title">
+                Available Colors
+              </h2>
 
-                <div className="product-details__swatches">
-                  {product.colors.map((color) => (
-                    <span
-                      key={color}
-                      className="product-details__swatch"
-                      style={{
-                        backgroundColor: color,
-                      }}
-                      title={color}
-                      aria-label={color}
-                    />
-                  ))}
-                </div>
+              <div className="product-details__swatches">
+                {product.colors.map((color) => (
+                  <span
+                    key={color}
+                    className="product-details__swatch"
+                    style={{ backgroundColor: color }}
+                    title={color}
+                    aria-label={color}
+                  />
+                ))}
               </div>
-            )}
+            </div>
+          )}
 
-          {/* Purchase Actions */}
           <div className="product-details__actions">
             <button
               type="button"
@@ -152,19 +171,22 @@ function ProductDetails() {
             <button
               type="button"
               className="product-details__wishlist"
+              onClick={handleWishlistToggle}
+              aria-pressed={isWishlisted}
             >
-              Add to Wishlist
+              {isWishlisted
+                ? 'Remove from Wishlist'
+                : 'Add to Wishlist'}
             </button>
           </div>
 
-          {/* Product Information */}
           <div className="product-details__information">
             <div className="product-details__information-item">
               <h2>Craftsmanship</h2>
 
               <p>
-                Crafted with attention to detail and inspired
-                by timeless Indian heritage.
+                Crafted with attention to detail and inspired by
+                timeless Indian heritage.
               </p>
             </div>
 
@@ -172,12 +194,10 @@ function ProductDetails() {
               <h2>Delivery</h2>
 
               <p>
-                Complimentary shipping on orders above
-                ₹25,000.
+                Complimentary shipping on orders above ₹25,000.
               </p>
             </div>
           </div>
-
         </div>
       </section>
     </main>

@@ -7,6 +7,7 @@ import VirtualConcierge from './components/VirtualConcierge/VirtualConcierge';
 import Footer from './components/Footer/Footer';
 import Shop from './pages/Shop/Shop';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
+import Wishlist from './pages/Wishlist/Wishlist';
 
 function App() {
   const currentPath = window.location.pathname;
@@ -18,12 +19,20 @@ function App() {
   const isProductDetailsPage =
     currentPath.startsWith('/product/');
 
+  const isWishlistPage =
+    currentPath === '/wishlist';
+
   return (
     <MainLayout>
 
       {isProductDetailsPage ? (
         <>
           <ProductDetails />
+          <Footer />
+        </>
+      ) : isWishlistPage ? (
+        <>
+          <Wishlist />
           <Footer />
         </>
       ) : isShopPage ? (

@@ -1,3 +1,4 @@
+import type { KeyboardEvent } from 'react';
 import type { ShopProduct } from '../../services/shop/shop.types';
 import './ProductCard.css';
 
@@ -6,18 +7,51 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
-  const handleProductClick = () => {
-    window.location.href = `/product/${product.id}`;
+
+  const getProductUrl = () => {
+
+    const currentPath = window.location.pathname;
+
+    const currentSearch = new URLSearchParams(
+      window.location.search
+    );
+
+    const currentCategory =
+      currentPath === '/shop'
+        ? currentSearch.get('category')
+        : null;
+
+    if (currentCategory) {
+      return `/product/${product.id}?category=${encodeURIComponent(
+        currentCategory
+      )}`;
+    }
+
+    return `/product/${product.id}`;
   };
 
+
+  const handleProductClick = () => {
+
+    window.location.href = getProductUrl();
+  };
+
+
   const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLElement>
+    event: KeyboardEvent<HTMLElement>
   ) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+
+    if (
+      event.key === 'Enter' ||
+      event.key === ' '
+    ) {
+
       event.preventDefault();
+
       handleProductClick();
     }
   };
+
 
   return (
     <article
@@ -28,37 +62,46 @@ function ProductCard({ product }: ProductCardProps) {
       onKeyDown={handleKeyDown}
       aria-label={`View ${product.name}`}
     >
-      {/* Product Image */}
+
       <div className="product-card__image">
+
         <img
           src={product.imageUrl}
           alt={product.name}
         />
+
       </div>
 
-      {/* Product Information */}
+
       <div className="product-card__info">
 
         <h2 className="product-card__name">
           {product.name}
         </h2>
 
-        {/* Pricing */}
+
         <div className="product-card__pricing">
+
           <span className="product-card__price">
             ₹ {product.price.toLocaleString('en-IN')}
           </span>
 
+
           {product.originalPrice !== undefined && (
+
             <span className="product-card__original-price">
               ₹ {product.originalPrice.toLocaleString('en-IN')}
             </span>
+
           )}
+
         </div>
 
-        {/* Rating */}
+
         {product.rating !== undefined && (
+
           <div className="product-card__rating">
+
             <span
               className="product-card__stars"
               aria-hidden="true"
@@ -66,40 +109,53 @@ function ProductCard({ product }: ProductCardProps) {
               ★★★★★
             </span>
 
+
             <span className="product-card__rating-value">
               {product.rating.toFixed(1)}
             </span>
 
+
             {product.reviewCount !== undefined && (
+
               <span className="product-card__review-count">
                 ({product.reviewCount})
               </span>
+
             )}
+
           </div>
+
         )}
 
-        {/* Color Swatches */}
+
         {product.colors &&
           product.colors.length > 0 && (
-            <div
-              className="product-card__swatches"
-              aria-label="Available colors"
-            >
-              {product.colors.map((color) => (
-                <span
-                  key={color}
-                  className="product-card__swatch"
-                  style={{
-                    backgroundColor: color,
-                  }}
-                  title={color}
-                  aria-label={color}
-                />
-              ))}
-            </div>
-          )}
+
+          <div
+            className="product-card__swatches"
+            aria-label="Available colors"
+          >
+
+            {product.colors.map((color) => (
+
+              <span
+                key={color}
+                className="product-card__swatch"
+                style={{
+                  backgroundColor: color,
+                }}
+                title={color}
+                aria-label={color}
+              />
+
+            ))}
+
+          </div>
+
+        )}
 
       </div>
+
     </article>
   );
 }

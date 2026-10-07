@@ -1,6 +1,9 @@
 .site-header {
+
   width: 100%;
+
   background-color: var(--color-ivory);
+
   color: var(--color-charcoal);
 
   border-bottom:
@@ -15,11 +18,15 @@
    ========================================================= */
 
 .site-header__main {
+
   width: 100%;
+
   background-color: var(--color-ivory);
 }
 
+
 .site-header__container {
+
   position: relative;
 
   width: min(
@@ -28,10 +35,13 @@
   );
 
   min-height: 78px;
+
   margin: 0 auto;
 
   display: grid;
+
   grid-template-columns: 1fr auto 1fr;
+
   align-items: center;
 
   gap: var(--space-md);
@@ -43,8 +53,11 @@
    ========================================================= */
 
 .site-header__left {
+
   display: flex;
+
   align-items: center;
+
   justify-content: flex-start;
 
   gap: var(--space-md);
@@ -56,26 +69,35 @@
    ========================================================= */
 
 .site-header__menu-button {
+
   width: 24px;
+
   height: 24px;
 
   padding: 0;
+
   border: 0;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
 
   gap: 5px;
 
   background: transparent;
+
   cursor: pointer;
 }
 
+
 .site-header__menu-button span {
+
   display: block;
 
   width: 18px;
+
   height: 1px;
 
   background-color: var(--color-warm-grey);
@@ -85,7 +107,9 @@
     transform var(--transition-fast);
 }
 
+
 .site-header__menu-button:hover span {
+
   background-color: var(--color-charcoal);
 }
 
@@ -95,12 +119,15 @@
    ========================================================= */
 
 .site-header__currency {
+
   display: inline-flex;
+
   align-items: center;
 
   gap: 4px;
 
   padding: var(--space-sm) 0;
+
   border: 0;
 
   background: transparent;
@@ -108,17 +135,23 @@
   color: var(--color-warm-grey);
 
   font-family: var(--font-sans);
+
   font-size: var(--font-xs);
+
   font-weight: var(--weight-regular);
 
   cursor: pointer;
 }
 
+
 .site-header__currency:hover {
+
   color: var(--color-charcoal);
 }
 
+
 .site-header__currency-arrow {
+
   font-size: 9px;
 }
 
@@ -128,10 +161,13 @@
    ========================================================= */
 
 .site-header__logo {
+
   color: var(--color-gold-secondary);
 
   font-family: var(--font-serif);
+
   font-size: 2rem;
+
   font-weight: var(--weight-regular);
 
   letter-spacing: 0.08em;
@@ -139,12 +175,15 @@
   line-height: 1;
 
   text-align: center;
+
   text-decoration: none;
 
   white-space: nowrap;
 }
 
+
 .site-header__logo:hover {
+
   color: var(--color-gold);
 }
 
@@ -154,22 +193,29 @@
    ========================================================= */
 
 .site-header__actions {
+
   display: flex;
+
   align-items: center;
+
   justify-content: flex-end;
 
   gap: var(--space-md);
 }
 
+
 .site-header__action {
+
   position: relative;
 
   display: inline-flex;
+
   align-items: center;
 
   gap: 5px;
 
   padding: var(--space-sm) 0;
+
   border: 0;
 
   background: transparent;
@@ -177,7 +223,9 @@
   color: var(--color-warm-grey);
 
   font-family: var(--font-sans);
+
   font-size: var(--font-xs);
+
   font-weight: var(--weight-regular);
 
   cursor: pointer;
@@ -185,7 +233,9 @@
   transition: color var(--transition-fast);
 }
 
+
 .site-header__action:hover {
+
   color: var(--color-charcoal);
 }
 
@@ -195,16 +245,21 @@
    ========================================================= */
 
 .site-header__icon {
+
   width: 17px;
+
   height: 17px;
 
   display: block;
 
   fill: none;
+
   stroke: currentColor;
+
   stroke-width: 1.35;
 
   stroke-linecap: round;
+
   stroke-linejoin: round;
 }
 
@@ -214,6 +269,7 @@
    ========================================================= */
 
 .site-header__action-label {
+
   white-space: nowrap;
 }
 
@@ -223,11 +279,15 @@
    ========================================================= */
 
 .site-header__wishlist {
+
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   padding: var(--space-sm) 0;
+
   margin: 0;
 
   border: 0;
@@ -241,7 +301,9 @@
   transition: color var(--transition-fast);
 }
 
+
 .site-header__wishlist:hover {
+
   color: var(--color-charcoal);
 }
 
@@ -251,9 +313,11 @@
    ========================================================= */
 
 .site-header__wishlist-content {
+
   position: relative;
 
   width: 22px;
+
   height: 22px;
 
   display: block;
@@ -263,21 +327,27 @@
 /* Complete Heart */
 
 .site-header__wishlist-icon {
+
   position: absolute;
 
   left: 1px;
+
   top: 2px;
 
   width: 18px;
+
   height: 18px;
 
   display: block;
 
   fill: none;
+
   stroke: currentColor;
+
   stroke-width: 1.35;
 
   stroke-linecap: round;
+
   stroke-linejoin: round;
 }
 
@@ -285,20 +355,25 @@
 /* Wishlist Count */
 
 .site-header__wishlist-count {
+
   position: absolute;
 
   top: -2px;
+
   right: -4px;
 
   display: block;
 
   margin: 0;
+
   padding: 0;
 
   color: currentColor;
 
   font-family: var(--font-sans);
+
   font-size: 8px;
+
   font-weight: var(--weight-regular);
 
   line-height: 1;
@@ -312,11 +387,15 @@
    ========================================================= */
 
 .site-header__bag {
+
   gap: 5px;
 }
 
+
 .site-header__bag-icon {
+
   width: 18px;
+
   height: 18px;
 
   flex-shrink: 0;
@@ -326,12 +405,15 @@
 /* Bag Count */
 
 .site-header__count {
+
   align-self: flex-start;
 
   margin-left: -2px;
 
   font-family: var(--font-sans);
+
   font-size: 8px;
+
   font-weight: var(--weight-regular);
 
   line-height: 1;
@@ -345,12 +427,15 @@
    ========================================================= */
 
 .site-header__category-navigation {
+
   width: 100%;
 
   min-height: 40px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   gap: var(--space-md);
@@ -365,6 +450,7 @@
   background-color: var(--color-ivory);
 
   overflow-x: auto;
+
   overflow-y: hidden;
 
   scrollbar-width: none;
@@ -372,11 +458,15 @@
   -webkit-overflow-scrolling: touch;
 }
 
+
 .site-header__category-navigation::-webkit-scrollbar {
+
   display: none;
 }
 
+
 .site-header__category-navigation a {
+
   position: relative;
 
   flex: 0 0 auto;
@@ -384,7 +474,9 @@
   color: var(--color-warm-grey);
 
   font-family: var(--font-sans);
+
   font-size: var(--font-xs);
+
   font-weight: var(--weight-regular);
 
   letter-spacing: var(--tracking-uppercase);
@@ -395,17 +487,44 @@
 
   white-space: nowrap;
 
-  transition: color var(--transition-fast);
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    font-weight var(--transition-fast);
 }
 
+
 .site-header__category-navigation a:hover {
+
   color: var(--color-charcoal);
 }
 
 
-/* Category Separators */
+/* =========================================================
+   ACTIVE CATEGORY
+   ========================================================= */
 
-.site-header__category-navigation a:not(:last-child)::after {
+.site-header__category-navigation
+.site-header__category-link--active {
+
+  color: var(--color-charcoal);
+
+  font-weight: 700;
+
+  transform: translateY(-2px);
+
+  text-shadow:
+    0 1px 0 var(--color-white);
+}
+
+
+/* =========================================================
+   CATEGORY SEPARATORS
+   ========================================================= */
+
+.site-header__category-navigation
+a:not(:last-child)::after {
+
   content: '|';
 
   margin-left: var(--space-md);
@@ -421,6 +540,7 @@
 @media (max-width: 1024px) {
 
   .site-header__container {
+
     width: calc(
       100% - (var(--page-padding) * 2)
     );
@@ -428,21 +548,30 @@
     min-height: 74px;
   }
 
+
   .site-header__logo {
+
     font-size: 1.8rem;
   }
 
+
   .site-header__category-navigation {
+
     gap: var(--space-sm);
 
     justify-content: center;
   }
 
+
   .site-header__category-navigation a {
+
     font-size: 10px;
   }
 
-  .site-header__category-navigation a:not(:last-child)::after {
+
+  .site-header__category-navigation
+  a:not(:last-child)::after {
+
     margin-left: var(--space-sm);
   }
 }
@@ -455,6 +584,7 @@
 @media (max-width: 767px) {
 
   .site-header__container {
+
     width: calc(
       100% - (var(--page-padding) * 2)
     );
@@ -468,10 +598,13 @@
   /* Left Controls */
 
   .site-header__left {
+
     gap: var(--space-sm);
   }
 
+
   .site-header__menu-button {
+
     display: flex;
   }
 
@@ -479,6 +612,7 @@
   /* Logo */
 
   .site-header__logo {
+
     justify-self: center;
 
     font-size: 1.45rem;
@@ -490,15 +624,21 @@
   /* Right Actions */
 
   .site-header__actions {
+
     gap: var(--space-sm);
   }
 
+
   .site-header__action-label {
+
     display: none;
   }
 
+
   .site-header__icon {
+
     width: 18px;
+
     height: 18px;
   }
 
@@ -506,20 +646,29 @@
   /* Mobile Wishlist */
 
   .site-header__wishlist-content {
+
     width: 22px;
+
     height: 22px;
   }
 
+
   .site-header__wishlist-icon {
+
     left: 1px;
+
     top: 2px;
 
     width: 18px;
+
     height: 18px;
   }
 
+
   .site-header__wishlist-count {
+
     top: -2px;
+
     right: -4px;
 
     font-size: 8px;
@@ -531,6 +680,7 @@
      ======================================================= */
 
   .site-header__category-navigation {
+
     display: flex;
 
     justify-content: center;
@@ -544,6 +694,7 @@
       var(--page-padding);
 
     overflow-x: auto;
+
     overflow-y: hidden;
 
     scrollbar-width: none;
@@ -551,18 +702,36 @@
     -webkit-overflow-scrolling: touch;
   }
 
+
   .site-header__category-navigation::-webkit-scrollbar {
+
     display: none;
   }
 
+
   .site-header__category-navigation a {
+
     flex: 0 0 auto;
 
     font-size: 10px;
   }
 
-  .site-header__category-navigation a:not(:last-child)::after {
+
+  .site-header__category-navigation
+  a:not(:last-child)::after {
+
     margin-left: var(--space-md);
+  }
+
+
+  /* Active category on mobile */
+
+  .site-header__category-navigation
+  .site-header__category-link--active {
+
+    transform: translateY(-2px);
+
+    font-weight: 700;
   }
 }
 
@@ -574,6 +743,7 @@
 @media (max-width: 520px) {
 
   .site-header__category-navigation {
+
     justify-content: flex-start;
   }
 }
