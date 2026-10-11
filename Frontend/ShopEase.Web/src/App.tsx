@@ -1,13 +1,18 @@
+
 import './App.css';
+
 import MainLayout from './layouts/MainLayout';
+
 import Hero from './components/Hero/Hero';
 import CategoryEditorial from './components/CategoryEditorial/CategoryEditorial';
 import FeaturedMasterpieces from './components/FeaturedMasterpieces/FeaturedMasterpieces';
 import VirtualConcierge from './components/VirtualConcierge/VirtualConcierge';
 import Footer from './components/Footer/Footer';
+
 import Shop from './pages/Shop/Shop';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Wishlist from './pages/Wishlist/Wishlist';
+import Cart from './pages/Cart/Cart';
 
 function App() {
   const currentPath = window.location.pathname;
@@ -22,9 +27,11 @@ function App() {
   const isWishlistPage =
     currentPath === '/wishlist';
 
+  const isCartPage =
+    currentPath === '/cart';
+
   return (
     <MainLayout>
-
       {isProductDetailsPage ? (
         <>
           <ProductDetails />
@@ -33,6 +40,11 @@ function App() {
       ) : isWishlistPage ? (
         <>
           <Wishlist />
+          <Footer />
+        </>
+      ) : isCartPage ? (
+        <>
+          <Cart />
           <Footer />
         </>
       ) : isShopPage ? (
@@ -49,7 +61,6 @@ function App() {
           <Footer />
         </>
       )}
-
     </MainLayout>
   );
 }

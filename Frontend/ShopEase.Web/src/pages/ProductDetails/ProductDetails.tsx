@@ -1,11 +1,18 @@
+
 import { useEffect, useMemo, useState } from 'react';
 import { shopPageData } from '../../services/shop/shop.data';
 import type { ShopProduct } from '../../services/shop/shop.types';
+
+import {
+  addToCart,
+} from '../../services/cart/cart.store';
+
 import {
   addToWishlist,
   isInWishlist,
   removeFromWishlist,
 } from '../../services/wishlist/wishlist.store';
+
 import './ProductDetails.css';
 
 function ProductDetails() {
@@ -28,9 +35,34 @@ function ProductDetails() {
     setIsWishlisted(isInWishlist(productId));
   }, [productId]);
 
+
+  /* =======================================================
+     NAVIGATION
+     ======================================================= */
+
   const handleBack = () => {
     window.history.back();
   };
+
+
+  /* =======================================================
+     ADD TO CART
+     ======================================================= */
+
+  const handleAddToBag = () => {
+    if (!product) {
+      return;
+    }
+
+    addToCart(product.id, 1);
+
+    window.location.href = '/cart';
+  };
+
+
+  /* =======================================================
+     WISHLIST
+     ======================================================= */
 
   const handleWishlistToggle = () => {
     if (!productId) {
@@ -47,10 +79,16 @@ function ProductDetails() {
     setIsWishlisted(true);
   };
 
+
+  /* =======================================================
+     PRODUCT NOT FOUND
+     ======================================================= */
+
   if (!product) {
     return (
       <main className="product-details">
         <section className="product-details__not-found">
+
           <button
             type="button"
             className="product-details__back-button"
@@ -74,14 +112,21 @@ function ProductDetails() {
           >
             Back to Shop
           </button>
+
         </section>
       </main>
     );
   }
 
+
+  /* =======================================================
+     PRODUCT DETAILS
+     ======================================================= */
+
   return (
     <main className="product-details">
       <section className="product-details__container">
+
         <button
           type="button"
           className="product-details__back-button"
@@ -89,6 +134,9 @@ function ProductDetails() {
         >
           ← Back
         </button>
+
+
+        {/* PRODUCT IMAGE */}
 
         <div className="product-details__image-wrapper">
           <img
@@ -98,7 +146,11 @@ function ProductDetails() {
           />
         </div>
 
+
+        {/* PRODUCT INFORMATION */}
+
         <div className="product-details__content">
+
           <p className="product-details__eyebrow">
             ShopEase Collection
           </p>
@@ -107,8 +159,12 @@ function ProductDetails() {
             {product.name}
           </h1>
 
+
+          {/* RATING */}
+
           {product.rating !== undefined && (
             <div className="product-details__rating">
+
               <span
                 className="product-details__stars"
                 aria-hidden="true"
@@ -125,10 +181,15 @@ function ProductDetails() {
                   ({product.reviewCount} reviews)
                 </span>
               )}
+
             </div>
           )}
 
+
+          {/* PRICING */}
+
           <div className="product-details__pricing">
+
             <span className="product-details__price">
               ₹ {product.price.toLocaleString('en-IN')}
             </span>
@@ -138,15 +199,21 @@ function ProductDetails() {
                 ₹ {product.originalPrice.toLocaleString('en-IN')}
               </span>
             )}
+
           </div>
+
+
+          {/* AVAILABLE COLORS */}
 
           {product.colors && product.colors.length > 0 && (
             <div className="product-details__colors">
+
               <h2 className="product-details__section-title">
                 Available Colors
               </h2>
 
               <div className="product-details__swatches">
+
                 {product.colors.map((color) => (
                   <span
                     key={color}
@@ -156,14 +223,21 @@ function ProductDetails() {
                     aria-label={color}
                   />
                 ))}
+
               </div>
+
             </div>
           )}
 
+
+          {/* PRODUCT ACTIONS */}
+
           <div className="product-details__actions">
+
             <button
               type="button"
               className="product-details__add-to-bag"
+              onClick={handleAddToBag}
             >
               Add to Bag
             </button>
@@ -178,15 +252,20 @@ function ProductDetails() {
                 ? 'Remove from Wishlist'
                 : 'Add to Wishlist'}
             </button>
+
           </div>
 
+
+          {/* PRODUCT INFORMATION */}
+
           <div className="product-details__information">
+
             <div className="product-details__information-item">
               <h2>Craftsmanship</h2>
 
               <p>
-                Crafted with attention to detail and inspired by
-                timeless Indian heritage.
+                Crafted with attention to detail and inspired
+                by timeless Indian heritage.
               </p>
             </div>
 
@@ -197,8 +276,11 @@ function ProductDetails() {
                 Complimentary shipping on orders above ₹25,000.
               </p>
             </div>
+
           </div>
+
         </div>
+
       </section>
     </main>
   );
