@@ -13,6 +13,7 @@ import Shop from './pages/Shop/Shop';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Wishlist from './pages/Wishlist/Wishlist';
 import Cart from './pages/Cart/Cart';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   const currentPath = window.location.pathname;
@@ -30,6 +31,9 @@ function App() {
   const isCartPage =
     currentPath === '/cart';
 
+  const isCheckoutPage =
+    currentPath === '/checkout';
+
   return (
     <MainLayout>
       {isProductDetailsPage ? (
@@ -40,6 +44,11 @@ function App() {
       ) : isWishlistPage ? (
         <>
           <Wishlist />
+          <Footer />
+        </>
+      ) : isCheckoutPage ? (
+        <>
+          <Checkout />
           <Footer />
         </>
       ) : isCartPage ? (

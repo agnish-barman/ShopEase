@@ -46,6 +46,12 @@ function Cart() {
     window.location.href = '/shop';
   };
 
+  const handleProceedToCheckout = () => {
+    if (cartItems.length === 0) return;
+
+    window.location.href = '/checkout';
+  };
+
   return (
     <main className="cart-page">
       <section className="cart-page__header">
@@ -197,10 +203,13 @@ function Cart() {
               <span>{formatPrice(subtotal)}</span>
             </div>
 
-            <p className="cart-summary__checkout-note">
-              Checkout integration will be added in the
-              next phase.
-            </p>
+            <button
+              type="button"
+              className="cart-summary__continue-button"
+              onClick={handleProceedToCheckout}
+            >
+              Proceed to Checkout
+            </button>
 
             <button
               type="button"

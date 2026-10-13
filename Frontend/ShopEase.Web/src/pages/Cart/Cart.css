@@ -460,3 +460,9 @@
     padding: var(--space-md);
   }
 }
+
+/* Add spacing between Cart summary action buttons */
+.cart-summary__continue-button + .cart-summary__continue-button {
+  margin-top: 12px;
+}
+
